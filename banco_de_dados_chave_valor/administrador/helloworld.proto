@@ -1,0 +1,51 @@
+/*
+
+Sistemas Distribuídos: Banco de Dados Chave-Valor (Configuração GRPC)
+Felipe Daniel Dias dos Santos - 11711ECP004
+Graduação em Engenharia de Computação - Faculdade de Engenharia Elétrica - Universidade Federal de Uberlândia
+
+*/
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package helloworld;
+
+service Greeter{
+  
+  rpc inserirCliente (RequisicaoInsercao) returns (Resposta){}
+  rpc modificarCliente (RequisicaoModificacao) returns (Resposta){}
+  rpc procurarCliente (RequisicaoProcura) returns (Resposta){}
+  rpc removerCliente (RequisicaoRemocao) returns (Resposta){}
+}
+
+message Resposta{
+ 
+  string mensagem = 1;
+}
+
+message RequisicaoInsercao{
+ 
+  sfixed32 id = 1;
+  string nome = 2;
+} 
+
+message RequisicaoModificacao{
+ 
+  sfixed32 id = 1;
+  string nome = 2;
+}
+
+message RequisicaoProcura{
+ 
+  sfixed32 id = 1;
+}
+
+message RequisicaoRemocao{
+ 
+  sfixed32 id = 1;
+}
